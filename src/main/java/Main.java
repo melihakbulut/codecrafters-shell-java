@@ -1,13 +1,11 @@
 
 // Uncomment this block to pass the first stage
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        System.out.println(Arrays.toString(args));
         // Uncomment this block to pass the first stage
         Set<String> shellBuiltin = Set.of("echo", "exit", "type");
         Set<String> bin = Set.of("cat");
