@@ -26,7 +26,7 @@ public class Main {
                 } else if (bin.contains(command)) {
                     System.out.println(command + " is /bin/" + command);
                 } else {
-                    System.out.println(input + ": command not found");
+                    System.out.println(command + ": command not found");
                 }
 
             } else
