@@ -19,7 +19,7 @@ public class Main {
             else if (input.startsWith("echo")) {
                 System.out.println(input.substring(5, input.length()));
             } else if (input.startsWith("type")) {
-                String[] arr = input.split("s+\\");
+                String[] arr = input.split("\\s+");
                 String command = arr[1];
                 if (shellBuiltin.contains(command)) {
                     System.out.println(command + " is a shell builtin");
