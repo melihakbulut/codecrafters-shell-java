@@ -14,6 +14,9 @@ public class Main {
             String input = scanner.nextLine();
             if (input.equals("exit 0"))
                 break;
+            else if (input.startsWith("echo")) {
+                System.out.println(input.substring(input.indexOf("echo ", input.length())));
+            }
             System.out.println(input + ": command not found");
             System.out.print("$ ");
         }
