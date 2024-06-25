@@ -63,7 +63,7 @@ public class Main {
                         if (cdFile.exists()) {
                             currentDir = arr[1];
                         } else
-                            System.out.println("No such file or directory");
+                            System.out.println("No such file or directory\\n");
                     }
 
                 } else {
