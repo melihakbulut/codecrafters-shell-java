@@ -76,6 +76,12 @@ public class Main {
                                 currentDir = tempCurrentDir;
                             } else
                                 System.out.print("cd: " + arr[1] + ": No such file or directory\n");
+                        } else {
+                            File cdFile = new File(tempCurrentDir);
+                            if (cdFile.exists()) {
+                                currentDir = tempCurrentDir;
+                            } else
+                                System.out.print("cd: " + arr[1] + ": No such file or directory\n");
                         }
                     }
 
