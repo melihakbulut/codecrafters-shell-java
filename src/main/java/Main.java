@@ -10,6 +10,7 @@ import java.util.Set;
 public class Main {
 
     private static List<File> paths = new ArrayList<File>();
+    private static String currentDir = System.getProperty("user.dir");
 
     public static void main(String[] args) throws Exception {
         //        System.out.println(System.getenv("PATH"));
@@ -44,7 +45,22 @@ public class Main {
 
             } else {
                 if (input.equals("pwd")) {
-                    System.out.println(System.getProperty("user.dir"));
+                    System.out.println(currentDir);
+                } else if (input.startsWith("cd")) {
+                    String[] arr = input.split("\\s+");
+                    if (arr[0].equals("cd") && arr.length == 1) {
+                        System.out.println(currentDir);
+                    } else if (arr[1].equals("..")) {
+                        String tempCurrentDir = currentDir;
+                        String[] dirsInArr = tempCurrentDir.split("/");
+                        for (int i = 0; i < dirsInArr.length - 1; i++) {
+                            tempCurrentDir += dirsInArr[i];
+                        }
+                        currentDir = tempCurrentDir;
+                    } else {
+                        currentDir = arr[1];
+                    }
+
                 } else {
                     String[] arr = input.split("\\s+");
                     String command = arr[0];
