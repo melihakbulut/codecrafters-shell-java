@@ -79,15 +79,7 @@ public class Main {
                     }
 
                 } else {
-                    //                    String command = inputParams[0];
-                    //                    String binary = getBinary(command);
-                    //                    if (binary != null) {
-                    //                        InputStream is = Runtime.getRuntime().exec(inputParams).getInputStream();
-                    //                        System.out.print(new String(is.readAllBytes()));
-                    //                        is.close();
-                    //                    } else
-                    //                        System.out.println(input + ": command not found");
-                    executeBinary(input, inputParams);
+                    executeBinary(input);
                 }
             }
 
@@ -97,9 +89,9 @@ public class Main {
 
     }
 
-    private static void executeBinary(String input, String[] inputParams) {
+    private static void executeBinary(String input) {
         try {
-            InputStream is = Runtime.getRuntime().exec(inputParams).getInputStream();
+            InputStream is = Runtime.getRuntime().exec(input.split("\\s+")).getInputStream();
             System.out.print(new String(is.readAllBytes()));
             is.close();
         } catch (Exception e) {
