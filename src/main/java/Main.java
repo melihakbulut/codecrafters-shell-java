@@ -66,7 +66,7 @@ public class Main {
                             int backCdCount = givenPath.split("/").length;
                             String[] tempCurrentDirAsArr = currentDir.split("/");
                             for (int i = 0; i < tempCurrentDirAsArr.length - backCdCount; i++) {
-                                tempCurrentDir = tempCurrentDirAsArr[i];
+                                tempCurrentDir += tempCurrentDirAsArr[i];
                             }
                             currentDir = "/" + tempCurrentDir;
                         } else if (givenPath.startsWith(".")) {
