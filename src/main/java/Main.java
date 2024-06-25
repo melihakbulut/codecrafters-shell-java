@@ -73,19 +73,9 @@ public class Main {
                             currentDir = "/" + tempCurrentDir;
                         } else if (givenPath.startsWith(".")) {
                             tempCurrentDir += givenPath.substring(1, givenPath.length());
-
-                            File cdFile = new File(tempCurrentDir);
-                            if (cdFile.exists()) {
-                                currentDir = tempCurrentDir;
-                            } else
-                                System.out.print("cd: " + tempCurrentDir
-                                                 + ": No such file or directory\n");
+                            checkDirAndSetCurrent(tempCurrentDir);
                         } else {
-                            File cdFile = new File(givenPath);
-                            if (cdFile.exists()) {
-                                currentDir = givenPath;
-                            } else
-                                System.out.print("cd: " + arr[1] + ": No such file or directory\n");
+                            checkDirAndSetCurrent(givenPath);
                         }
                     }
 
@@ -106,6 +96,14 @@ public class Main {
         }
         scanner.close();
 
+    }
+
+    private static void checkDirAndSetCurrent(String givenPath) {
+        File cdFile = new File(givenPath);
+        if (cdFile.exists()) {
+            currentDir = givenPath;
+        } else
+            System.out.print("cd: " + givenPath + ": No such file or directory\n");
     }
 
     private static void setPaths() {
