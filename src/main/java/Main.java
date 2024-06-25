@@ -43,15 +43,19 @@ public class Main {
                 }
 
             } else {
-                String[] arr = input.split("\\s+");
-                String command = arr[0];
-                String binary = getBinary(command);
-                if (binary != null) {
-                    InputStream is = Runtime.getRuntime().exec(arr).getInputStream();
-                    System.out.print(new String(is.readAllBytes()));
-                    is.close();
-                } else
-                    System.out.println(input + ": command not found");
+                if (input.equals("pwd")) {
+                    System.out.print(System.getProperty("user.dir"));
+                } else {
+                    String[] arr = input.split("\\s+");
+                    String command = arr[0];
+                    String binary = getBinary(command);
+                    if (binary != null) {
+                        InputStream is = Runtime.getRuntime().exec(arr).getInputStream();
+                        System.out.print(new String(is.readAllBytes()));
+                        is.close();
+                    } else
+                        System.out.println(input + ": command not found");
+                }
             }
             System.out.print("$ ");
         }
