@@ -75,7 +75,8 @@ public class Main {
                             if (cdFile.exists()) {
                                 currentDir = tempCurrentDir;
                             } else
-                                System.out.print("cd: " + arr[1] + ": No such file or directory\n");
+                                System.out.print("cd: " + tempCurrentDir
+                                                 + ": No such file or directory\n");
                         } else {
                             File cdFile = new File(givenPath);
                             if (cdFile.exists()) {
