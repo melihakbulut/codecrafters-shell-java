@@ -7,6 +7,8 @@ import java.util.Set;
 
 public class Main {
 
+    private static List<String> paths;
+
     public static void main(String[] args) throws Exception {
         //        System.out.println(System.getenv("PATH"));
         //        example env
@@ -14,7 +16,7 @@ public class Main {
 
         // Uncomment this block to pass the first stage
         Set<String> shellBuiltin = Set.of("echo", "exit", "type");
-        List<String> paths = Arrays.asList(System.getenv("PATH").split(":"));
+        paths = Arrays.asList(System.getenv("PATH").split(":"));
         System.out.print("$ ");
 
         Scanner scanner = new Scanner(System.in);
@@ -29,10 +31,13 @@ public class Main {
                 String command = arr[1];
                 if (shellBuiltin.contains(command)) {
                     System.out.println(command + " is a shell builtin");
-                } else if (paths.contains(command)) {
-                    System.out.println(command + " is /bin/" + command);
                 } else {
-                    System.out.println(command + ": not found");
+                    String binary = getBinary(command);
+                    if (binary != null) {
+                        System.out.println(command + " is " + binary);
+                    } else {
+                        System.out.println(command + ": not found");
+                    }
                 }
 
             } else
@@ -41,5 +46,14 @@ public class Main {
         }
         scanner.close();
 
+    }
+
+    private static String getBinary(String command) {
+        for (String path : paths) {
+            if (path.contains(command)) {
+                return path;
+            }
+        }
+        return null;
     }
 }
