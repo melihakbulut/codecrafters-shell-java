@@ -93,8 +93,7 @@ public class Main {
     }
 
     private static void executeBinary(String input) {
-        try {
-            InputStream is = Runtime.getRuntime().exec(input.split("\\s+")).getInputStream();
+        try (InputStream is = Runtime.getRuntime().exec(input.split("\\s+")).getInputStream()) {
             System.out.print(new String(is.readAllBytes()));
             is.close();
         } catch (Exception e) {
