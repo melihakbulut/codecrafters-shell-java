@@ -63,7 +63,7 @@ public class Main {
                         if (cdFile.exists()) {
                             currentDir = arr[1];
                         } else
-                            System.out.println("");
+                            System.out.println();
                     }
 
                 } else {
