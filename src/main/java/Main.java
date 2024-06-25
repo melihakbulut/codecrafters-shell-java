@@ -1,13 +1,13 @@
 
 // Uncomment this block to pass the first stage
-import java.util.Arrays;
+import java.io.File;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
 
-    private static List<String> paths;
+    private static List<File> paths;
 
     public static void main(String[] args) throws Exception {
         //        System.out.println(System.getenv("PATH"));
@@ -16,8 +16,7 @@ public class Main {
 
         // Uncomment this block to pass the first stage
         Set<String> shellBuiltin = Set.of("echo", "exit", "type");
-        paths = Arrays.asList(System.getenv("PATH").split(":"));
-        System.out.print("$ ");
+        setPaths();
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -48,10 +47,19 @@ public class Main {
 
     }
 
+    private static void setPaths() {
+        String[] pathEnvArr = System.getenv("PATH").split(":");
+        for (String path : pathEnvArr) {
+            paths.add(new File(path));
+        }
+    }
+
     private static String getBinary(String command) {
-        for (String path : paths) {
-            if (path.contains(command)) {
-                return path;
+        File tmpFile = null;
+        for (File dir : paths) {
+            tmpFile = new File(dir + "/" + command);
+            if (tmpFile.exists()) {
+                return tmpFile.getName();
             }
         }
         return null;
