@@ -59,11 +59,24 @@ public class Main {
                         currentDir = tempCurrentDir;
 
                     } else {
-                        File cdFile = new File(arr[1]);
-                        if (cdFile.exists()) {
-                            currentDir = arr[1];
-                        } else
-                            System.out.print("cd: " + arr[1] + ": No such file or directory\n");
+                        String tempCurrentDir = currentDir;
+                        String givenPath = arr[1];
+                        if (givenPath.startsWith("..")) {
+                            int backCdCount = givenPath.split("/").length;
+                            String[] tempCurrentDirAsArr = currentDir.split("/");
+                            for (int i = 0; i < tempCurrentDirAsArr.length - backCdCount; i++) {
+                                tempCurrentDir = tempCurrentDirAsArr[i];
+                            }
+                            currentDir = tempCurrentDir;
+                        } else if (givenPath.startsWith(".")) {
+                            tempCurrentDir += givenPath;
+
+                            File cdFile = new File(tempCurrentDir);
+                            if (cdFile.exists()) {
+                                currentDir = tempCurrentDir;
+                            } else
+                                System.out.print("cd: " + arr[1] + ": No such file or directory\n");
+                        }
                     }
 
                 } else {
