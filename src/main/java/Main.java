@@ -58,7 +58,7 @@ public class Main {
                     if (inputParams[0].equals("cd") && inputParams.length == 1) {
                         System.out.println(currentDir);
                     } else if (inputParams[1].equals("~")) {
-                        currentDir = homeDir;
+                        setCurrentDir(homeDir);
                     } else {
                         String tempCurrentDir = currentDir;
                         String givenPath = inputParams[1];
@@ -68,7 +68,7 @@ public class Main {
                             for (int i = 0; i < tempCurrentDirAsArr.length - backCdCount; i++) {
                                 tempCurrentDir = tempCurrentDirAsArr[i];
                             }
-                            currentDir = "/" + tempCurrentDir;
+                            setCurrentDir("/" + tempCurrentDir);
                         } else if (givenPath.startsWith(".")) {
                             tempCurrentDir += givenPath.substring(1, givenPath.length());
                             checkDirAndSetCurrent(tempCurrentDir);
@@ -88,6 +88,10 @@ public class Main {
 
     }
 
+    private static void setCurrentDir(String givenDir) {
+        currentDir = givenDir;
+    }
+
     private static void executeBinary(String input) {
         try {
             InputStream is = Runtime.getRuntime().exec(input.split("\\s+")).getInputStream();
@@ -101,7 +105,7 @@ public class Main {
     private static void checkDirAndSetCurrent(String givenPath) {
         File cdFile = new File(givenPath);
         if (cdFile.exists()) {
-            currentDir = givenPath;
+            setCurrentDir(givenPath);
         } else
             System.out.print("cd: " + givenPath + ": No such file or directory\n");
     }
