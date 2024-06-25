@@ -1,6 +1,7 @@
 
 // Uncomment this block to pass the first stage
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -47,7 +48,10 @@ public class Main {
                 String param = arr[1];
                 String binary = getBinary(command);
                 if (binary != null) {
-                    Runtime.getRuntime().exec(new String[] {binary, param});
+                    InputStream is = Runtime.getRuntime().exec(new String[] {binary, param})
+                                    .getInputStream();
+                    System.out.println(new String(is.readAllBytes()));
+                    is.close();
                 } else
                     System.out.println(input + ": command not found");
             }
