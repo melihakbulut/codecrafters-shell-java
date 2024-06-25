@@ -60,7 +60,7 @@ public class Main {
                             }
                             currentDir = tempCurrentDir;
                         } else
-                            System.out.println();
+                            System.out.println("none");
                     } else {
                         currentDir = arr[1];
                     }
