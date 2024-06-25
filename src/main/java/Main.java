@@ -41,8 +41,15 @@ public class Main {
                     }
                 }
 
-            } else
-                System.out.println(input + ": command not found");
+            } else {
+                String[] arr = input.split("\\s+");
+                String command = arr[1];
+                String binary = getBinary(command);
+                if (binary != null) {
+                    Runtime.getRuntime().exec(binary);
+                } else
+                    System.out.println(input + ": command not found");
+            }
             System.out.print("$ ");
         }
         scanner.close();
