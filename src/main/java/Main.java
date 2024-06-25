@@ -51,18 +51,19 @@ public class Main {
                     if (arr[0].equals("cd") && arr.length == 1) {
                         System.out.println(currentDir);
                     } else if (arr[1].equals("..")) {
+                        String tempCurrentDir = currentDir;
+                        String[] dirsInArr = tempCurrentDir.split("/");
+                        for (int i = 0; i < dirsInArr.length - 1; i++) {
+                            tempCurrentDir += dirsInArr[i];
+                        }
+                        currentDir = tempCurrentDir;
+
+                    } else {
                         File cdFile = new File(arr[1]);
                         if (cdFile.exists()) {
-                            String tempCurrentDir = currentDir;
-                            String[] dirsInArr = tempCurrentDir.split("/");
-                            for (int i = 0; i < dirsInArr.length - 1; i++) {
-                                tempCurrentDir += dirsInArr[i];
-                            }
-                            currentDir = tempCurrentDir;
+                            currentDir = arr[1];
                         } else
                             System.out.println("none");
-                    } else {
-                        currentDir = arr[1];
                     }
 
                 } else {
