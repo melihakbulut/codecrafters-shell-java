@@ -14,7 +14,14 @@ public class Main {
     private static String homeDir = System.getenv("HOME");
 
     static {
-        setPaths();
+        convertPathVariable();
+    }
+
+    private static void convertPathVariable() {
+        String[] pathEnvArr = System.getenv("PATH").split(":");
+        for (String path : pathEnvArr) {
+            paths.add(new File(path));
+        }
     }
 
     public static void main(String[] args) throws Exception {
@@ -97,13 +104,6 @@ public class Main {
             currentDir = givenPath;
         } else
             System.out.print("cd: " + givenPath + ": No such file or directory\n");
-    }
-
-    private static void setPaths() {
-        String[] pathEnvArr = System.getenv("PATH").split(":");
-        for (String path : pathEnvArr) {
-            paths.add(new File(path));
-        }
     }
 
     private static String getBinary(String command) {
