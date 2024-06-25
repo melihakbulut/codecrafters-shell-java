@@ -69,7 +69,7 @@ public class Main {
                             }
                             currentDir = tempCurrentDir;
                         } else if (givenPath.startsWith(".")) {
-                            tempCurrentDir += givenPath.substring(0, givenPath.length());
+                            tempCurrentDir += givenPath.substring(1, givenPath.length());
 
                             File cdFile = new File(tempCurrentDir);
                             if (cdFile.exists()) {
