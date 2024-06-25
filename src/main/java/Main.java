@@ -79,14 +79,15 @@ public class Main {
                     }
 
                 } else {
-                    String command = inputParams[0];
-                    String binary = getBinary(command);
-                    if (binary != null) {
-                        InputStream is = Runtime.getRuntime().exec(inputParams).getInputStream();
-                        System.out.print(new String(is.readAllBytes()));
-                        is.close();
-                    } else
-                        System.out.println(input + ": command not found");
+                    //                    String command = inputParams[0];
+                    //                    String binary = getBinary(command);
+                    //                    if (binary != null) {
+                    //                        InputStream is = Runtime.getRuntime().exec(inputParams).getInputStream();
+                    //                        System.out.print(new String(is.readAllBytes()));
+                    //                        is.close();
+                    //                    } else
+                    //                        System.out.println(input + ": command not found");
+                    executeBinary(input, inputParams);
                 }
             }
 
@@ -94,6 +95,16 @@ public class Main {
         }
         scanner.close();
 
+    }
+
+    private static void executeBinary(String input, String[] inputParams) {
+        try {
+            InputStream is = Runtime.getRuntime().exec(inputParams).getInputStream();
+            System.out.print(new String(is.readAllBytes()));
+            is.close();
+        } catch (Exception e) {
+            System.out.println(input + ": command not found");
+        }
     }
 
     private static void checkDirAndSetCurrent(String givenPath) {
