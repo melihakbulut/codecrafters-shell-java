@@ -61,7 +61,7 @@ public class Main {
         for (File dir : paths) {
             tmpFile = new File(dir + "/" + command);
             if (tmpFile.exists()) {
-                return tmpFile.getName();
+                return tmpFile.getAbsolutePath();
             }
         }
         return null;
