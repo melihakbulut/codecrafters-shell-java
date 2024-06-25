@@ -17,7 +17,7 @@ public class Main {
         //[your-program] /tmp/mango/pineapple/banana:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
         // Uncomment this block to pass the first stage
-        Set<String> shellBuiltin = Set.of("echo", "exit", "type");
+        Set<String> shellBuiltin = Set.of("echo", "exit", "type", "pwd");
         setPaths();
         System.out.print("$ ");
 
