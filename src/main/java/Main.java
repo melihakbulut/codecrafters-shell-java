@@ -18,7 +18,7 @@ public class Main {
         // Uncomment this block to pass the first stage
         Set<String> shellBuiltin = Set.of("echo", "exit", "type");
         setPaths();
-        System.out.println("$ ");
+        System.out.print("$ ");
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
