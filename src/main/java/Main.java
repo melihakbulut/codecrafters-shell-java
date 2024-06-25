@@ -11,6 +11,7 @@ public class Main {
 
     private static List<File> paths = new ArrayList<File>();
     private static String currentDir = System.getProperty("user.dir");
+    private static String homeDir = System.getenv("HOME");
 
     public static void main(String[] args) throws Exception {
         //        System.out.println(System.getenv("PATH"));
@@ -58,6 +59,8 @@ public class Main {
                         }
                         currentDir = tempCurrentDir;
 
+                    } else if (arr[1].equals("~")) {
+                        currentDir = homeDir;
                     } else {
                         String tempCurrentDir = currentDir;
                         String givenPath = arr[1];
