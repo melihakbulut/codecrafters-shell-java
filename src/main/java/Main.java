@@ -59,7 +59,8 @@ public class Main {
                                 tempCurrentDir += dirsInArr[i];
                             }
                             currentDir = tempCurrentDir;
-                        }
+                        } else
+                            System.out.println();
                     } else {
                         currentDir = arr[1];
                     }
