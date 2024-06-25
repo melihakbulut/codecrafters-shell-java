@@ -50,7 +50,7 @@ public class Main {
                 if (binary != null) {
                     InputStream is = Runtime.getRuntime().exec(new String[] {binary, param})
                                     .getInputStream();
-                    System.out.println(new String(is.readAllBytes()));
+                    System.out.print(new String(is.readAllBytes()));
                     is.close();
                 } else
                     System.out.println(input + ": command not found");
