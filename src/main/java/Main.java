@@ -67,7 +67,7 @@ public class Main {
                             for (int i = 0; i < tempCurrentDirAsArr.length - backCdCount; i++) {
                                 tempCurrentDir = tempCurrentDirAsArr[i];
                             }
-                            currentDir = tempCurrentDir;
+                            currentDir = tempCurrentDir + "\n";
                         } else if (givenPath.startsWith(".")) {
                             tempCurrentDir += givenPath.substring(1, givenPath.length());
 
@@ -98,6 +98,7 @@ public class Main {
                         System.out.println(input + ": command not found");
                 }
             }
+
             System.out.print("$ ");
         }
         scanner.close();
