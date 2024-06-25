@@ -57,7 +57,6 @@ public class Main {
                             tempCurrentDir += dirsInArr[i];
                         }
                         currentDir = tempCurrentDir;
-
                     } else if (inputParams[1].equals("~")) {
                         currentDir = homeDir;
                     } else {
