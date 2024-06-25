@@ -1,15 +1,20 @@
 
 // Uncomment this block to pass the first stage
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        System.out.println(System.getenv("PATH"));
+        //        System.out.println(System.getenv("PATH"));
+        //        example env
+        //[your-program] /tmp/mango/pineapple/banana:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
         // Uncomment this block to pass the first stage
         Set<String> shellBuiltin = Set.of("echo", "exit", "type");
-        Set<String> bin = Set.of("cat");
+        List<String> paths = Arrays.asList(System.getenv("PATH").split(":"));
         System.out.print("$ ");
 
         Scanner scanner = new Scanner(System.in);
@@ -24,7 +29,7 @@ public class Main {
                 String command = arr[1];
                 if (shellBuiltin.contains(command)) {
                     System.out.println(command + " is a shell builtin");
-                } else if (bin.contains(command)) {
+                } else if (paths.contains(command)) {
                     System.out.println(command + " is /bin/" + command);
                 } else {
                     System.out.println(command + ": not found");
