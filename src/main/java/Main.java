@@ -67,7 +67,7 @@ public class Main {
                             for (int i = 0; i < tempCurrentDirAsArr.length - backCdCount; i++) {
                                 tempCurrentDir = tempCurrentDirAsArr[i];
                             }
-                            currentDir = tempCurrentDir + "\n";
+                            currentDir = "/" + tempCurrentDir;
                         } else if (givenPath.startsWith(".")) {
                             tempCurrentDir += givenPath.substring(1, givenPath.length());
 
