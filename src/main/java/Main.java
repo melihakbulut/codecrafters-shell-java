@@ -1,13 +1,14 @@
 
 // Uncomment this block to pass the first stage
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
 
-    private static List<File> paths;
+    private static List<File> paths = new ArrayList<File>();
 
     public static void main(String[] args) throws Exception {
         //        System.out.println(System.getenv("PATH"));
