@@ -26,13 +26,13 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             String input = scanner.nextLine();
+            String[] inputParams = input.split("\\s+");
             if (input.equals("exit 0"))
                 break;
             else if (input.startsWith("echo")) {
                 System.out.println(input.substring(5, input.length()));
             } else if (input.startsWith("type")) {
-                String[] arr = input.split("\\s+");
-                String command = arr[1];
+                String command = inputParams[1];
                 if (shellBuiltin.contains(command)) {
                     System.out.println(command + " is a shell builtin");
                 } else {
@@ -48,10 +48,9 @@ public class Main {
                 if (input.equals("pwd")) {
                     System.out.println(currentDir);
                 } else if (input.startsWith("cd")) {
-                    String[] arr = input.split("\\s+");
-                    if (arr[0].equals("cd") && arr.length == 1) {
+                    if (inputParams[0].equals("cd") && inputParams.length == 1) {
                         System.out.println(currentDir);
-                    } else if (arr[1].equals("..")) {
+                    } else if (inputParams[1].equals("..")) {
                         String tempCurrentDir = currentDir;
                         String[] dirsInArr = tempCurrentDir.split("/");
                         for (int i = 0; i < dirsInArr.length - 1; i++) {
@@ -59,11 +58,11 @@ public class Main {
                         }
                         currentDir = tempCurrentDir;
 
-                    } else if (arr[1].equals("~")) {
+                    } else if (inputParams[1].equals("~")) {
                         currentDir = homeDir;
                     } else {
                         String tempCurrentDir = currentDir;
-                        String givenPath = arr[1];
+                        String givenPath = inputParams[1];
                         if (givenPath.startsWith("..")) {
                             int backCdCount = givenPath.split("/").length;
                             String[] tempCurrentDirAsArr = currentDir.split("/");
@@ -80,11 +79,10 @@ public class Main {
                     }
 
                 } else {
-                    String[] arr = input.split("\\s+");
-                    String command = arr[0];
+                    String command = inputParams[0];
                     String binary = getBinary(command);
                     if (binary != null) {
-                        InputStream is = Runtime.getRuntime().exec(arr).getInputStream();
+                        InputStream is = Runtime.getRuntime().exec(inputParams).getInputStream();
                         System.out.print(new String(is.readAllBytes()));
                         is.close();
                     } else
