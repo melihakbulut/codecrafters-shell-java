@@ -45,11 +45,9 @@ public class Main {
             } else {
                 String[] arr = input.split("\\s+");
                 String command = arr[0];
-                String param = arr[1];
                 String binary = getBinary(command);
                 if (binary != null) {
-                    InputStream is = Runtime.getRuntime().exec(new String[] {binary, param})
-                                    .getInputStream();
+                    InputStream is = Runtime.getRuntime().exec(arr).getInputStream();
                     System.out.print(new String(is.readAllBytes()));
                     is.close();
                 } else
