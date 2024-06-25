@@ -43,10 +43,11 @@ public class Main {
 
             } else {
                 String[] arr = input.split("\\s+");
-                String command = arr[1];
+                String command = arr[0];
+                String param = arr[1];
                 String binary = getBinary(command);
                 if (binary != null) {
-                    Runtime.getRuntime().exec(binary);
+                    Runtime.getRuntime().exec(new String[] {binary, param});
                 } else
                     System.out.println(input + ": command not found");
             }
