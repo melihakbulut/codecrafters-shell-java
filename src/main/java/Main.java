@@ -50,16 +50,7 @@ public class Main {
                 } else if (input.startsWith("cd")) {
                     if (inputParams[0].equals("cd") && inputParams.length == 1) {
                         System.out.println(currentDir);
-                    }
-                    //                    else if (inputParams[1].equals("..")) {
-                    //                        String tempCurrentDir = currentDir;
-                    //                        String[] dirsInArr = tempCurrentDir.split("/");
-                    //                        for (int i = 0; i < dirsInArr.length - 1; i++) {
-                    //                            tempCurrentDir += dirsInArr[i];
-                    //                        }
-                    //                        currentDir = tempCurrentDir;
-                    //                    }
-                    else if (inputParams[1].equals("~")) {
+                    } else if (inputParams[1].equals("~")) {
                         currentDir = homeDir;
                     } else {
                         String tempCurrentDir = currentDir;
