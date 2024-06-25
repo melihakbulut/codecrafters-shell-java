@@ -13,14 +13,14 @@ public class Main {
     private static String currentDir = System.getProperty("user.dir");
     private static String homeDir = System.getenv("HOME");
 
-    public static void main(String[] args) throws Exception {
-        //        System.out.println(System.getenv("PATH"));
-        //        example env
-        //[your-program] /tmp/mango/pineapple/banana:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-
-        // Uncomment this block to pass the first stage
-        Set<String> shellBuiltin = Set.of("echo", "exit", "type", "pwd");
+    static {
         setPaths();
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        Set<String> shellBuiltin = Set.of("echo", "exit", "type", "pwd");
+
         System.out.print("$ ");
 
         Scanner scanner = new Scanner(System.in);
