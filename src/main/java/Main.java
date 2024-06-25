@@ -44,7 +44,7 @@ public class Main {
 
             } else {
                 if (input.equals("pwd")) {
-                    System.out.print(System.getProperty("user.dir"));
+                    System.out.println(System.getProperty("user.dir"));
                 } else {
                     String[] arr = input.split("\\s+");
                     String command = arr[0];
